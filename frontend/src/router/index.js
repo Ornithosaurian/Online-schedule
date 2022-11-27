@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router/dist/vue-router.esm-bundler'
 import Home from '../components/Home.vue'
 import Test from '../components/Test.vue'
+import News from '../components/News.vue'
 
 const routes = [
     {
@@ -10,6 +11,10 @@ const routes = [
     {
         path: '/test',
         component: Test
+    },
+    {
+        path: '/news',
+        component: News
     }
 ]
 

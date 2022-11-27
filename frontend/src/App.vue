@@ -5,7 +5,6 @@
     <main>
       <router-view />
     </main>
-
     <Footer/>
   </div>
 </template>
@@ -14,11 +13,13 @@
 import {defineComponent} from 'vue'
 import Header from './components/layouts/Header.vue'
 import Footer from './components/layouts/Footer.vue'
+import News from './components/News.vue'
 
 export default defineComponent({
   components:{
     Header,
     Footer,
+    News
   }
 })
 </script>
