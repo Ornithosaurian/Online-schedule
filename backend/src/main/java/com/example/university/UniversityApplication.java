@@ -2,6 +2,7 @@ package com.example.university;
 
 import com.example.university.model.News;
 import com.example.university.service.NewsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,6 +17,7 @@ public class UniversityApplication implements CommandLineRunner {
     }
 
 // test data for News
+    @Autowired
     public UniversityApplication(NewsService newsService) {
         this.newsService = newsService;
     }
