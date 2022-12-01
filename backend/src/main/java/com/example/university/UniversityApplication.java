@@ -1,8 +1,7 @@
 package com.example.university;
 
-import com.example.university.models.News;
-import com.example.university.services.NewsService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.university.model.News;
+import com.example.university.service.NewsService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -42,7 +41,7 @@ public class UniversityApplication implements CommandLineRunner {
                 .date(curDate)
                 .build();
 
-        newsService.addNews(news1);
-        newsService.addNews(news2);
+        newsService.saveNews(news1);
+        newsService.saveNews(news2);
     }
 }

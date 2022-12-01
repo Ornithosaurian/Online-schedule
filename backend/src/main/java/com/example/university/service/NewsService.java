@@ -1,6 +1,6 @@
-package com.example.university.services;
+package com.example.university.service;
 
-import com.example.university.models.News;
+import com.example.university.model.News;
 import com.example.university.repository.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +22,7 @@ public class NewsService {
         return newsRepository.findAll();
     }
 
-    public void addNews(News news) {
+    public void saveNews(News news) {
         newsRepository.save(news);
     }
 

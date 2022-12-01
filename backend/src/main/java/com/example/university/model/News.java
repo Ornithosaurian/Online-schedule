@@ -1,4 +1,4 @@
-package com.example.university.models;
+package com.example.university.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -27,6 +27,7 @@ public class News {
 
     @Column(nullable = false,columnDefinition="DATE")
     private Date date;
+
 
     public long getId() {
         return id;
