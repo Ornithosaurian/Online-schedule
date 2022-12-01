@@ -25,6 +25,28 @@ public class Faculty {
     @Column(nullable = false, columnDefinition="VARCHAR(10)")
     private String ShortName;
 
+    @Column(nullable = false, columnDefinition="TEXT")
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImgSrc() {
+        return imgSrc;
+    }
+
+    public void setImgSrc(String imgSrc) {
+        this.imgSrc = imgSrc;
+    }
+
+    @Column(nullable = false, columnDefinition="TEXT")
+    private String imgSrc;
+
     @OneToMany(targetEntity = Department.class, cascade = CascadeType.ALL)
     private List<Department> departments;
 
