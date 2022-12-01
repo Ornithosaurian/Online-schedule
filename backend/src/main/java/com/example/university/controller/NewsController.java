@@ -28,7 +28,7 @@ public class NewsController {
             return new ResponseEntity<>(newsList, HttpStatus.NO_CONTENT);
         }
 
-        return new ResponseEntity<>(newsService.getNewsList(), HttpStatus.OK);
+        return new ResponseEntity<>(newsList, HttpStatus.OK);
     }
 
     @GetMapping("/news/{id}")
@@ -45,7 +45,7 @@ public class NewsController {
     }
 
     @PutMapping("/news/{id}")
-    public void updateNews(@PathVariable("id") long id, @RequestBody News news){
+    public ResponseEntity<HttpStatus> updateNews(@PathVariable("id") long id, @RequestBody News news){
         News updatedNews = newsService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + id));
 
@@ -55,12 +55,32 @@ public class NewsController {
         updatedNews.setDate(news.getDate());
 
         newsService.saveNews(updatedNews);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping("/news/{id}")
     public ResponseEntity<HttpStatus> deleteNews(@PathVariable("id") long id){
         newsService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+    @GetMapping("/news/sortByNew")
+    public ResponseEntity<List<News>> sortByNew(){
+        List<News> orderedList = newsService.sortByNew();
+        if (orderedList.isEmpty()) {
+            return new ResponseEntity<>(orderedList, HttpStatus.NO_CONTENT);
+        }
+
+        return new ResponseEntity<>(orderedList, HttpStatus.OK);
+    }
+
+    @GetMapping("/news/sortByOld")
+    public ResponseEntity<List<News>> sortByOld(){
+        List<News> orderedList = newsService.sortByOld();
+        if (orderedList.isEmpty()) {
+            return new ResponseEntity<>(orderedList, HttpStatus.NO_CONTENT);
+        }
+
+        return new ResponseEntity<>(orderedList, HttpStatus.OK);
     }
 }
 

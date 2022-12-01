@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class NewsService {
+public abstract class NewsService {
 
     private final NewsRepository newsRepository;
 
@@ -18,7 +18,7 @@ public class NewsService {
         this.newsRepository = newsRepository;
     }
 
-    public List<News> getNewsList(){
+    public List<News> getNewsList() {
         return newsRepository.findAll();
     }
 
@@ -33,4 +33,12 @@ public class NewsService {
     public void deleteById(long id) {
         newsRepository.deleteById(id);
     }
-}
+
+    public List<News> sortByNew(){
+        return newsRepository.selectByNew();
+    }
+
+    public List<News> sortByOld(){
+        return newsRepository.selectByOld();
+    }
+ }
