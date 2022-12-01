@@ -1,7 +1,11 @@
 package com.example.university.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -10,7 +14,7 @@ import lombok.*;
 @Builder
 @Entity
 @Table
-public class Faculties {
+public class Faculty {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -20,6 +24,17 @@ public class Faculties {
 
     @Column(nullable = false, columnDefinition="VARCHAR(10)")
     private String ShortName;
+
+    @OneToMany(targetEntity = Department.class, cascade = CascadeType.ALL)
+    private List<Department> departments;
+
+    public List<Department> getDepartments() {
+        return departments;
+    }
+
+    public void setDepartments(List<Department> departments) {
+        this.departments = departments;
+    }
 
     public long getId() {
         return id;
