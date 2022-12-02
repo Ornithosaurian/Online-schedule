@@ -1,10 +1,8 @@
 package com.example.university.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -23,7 +21,7 @@ public class Faculty {
     private String name;
 
     @Column(nullable = false, columnDefinition="VARCHAR(10)")
-    private String ShortName;
+    private String shortName;
 
     @Column(nullable = false, columnDefinition="TEXT")
     private String description;
@@ -75,10 +73,10 @@ public class Faculty {
     }
 
     public String getShortName() {
-        return ShortName;
+        return shortName;
     }
 
     public void setShortName(String shortName) {
-        ShortName = shortName;
+        this.shortName = shortName;
     }
 }
