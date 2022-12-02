@@ -9,36 +9,21 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class NewsService {
+public class NewsService extends BaseService {
 
     private final NewsRepository newsRepository;
 
     @Autowired
     public NewsService(NewsRepository newsRepository) {
+        super(newsRepository);
         this.newsRepository = newsRepository;
     }
 
-    public List<News> getNewsList() {
-        return newsRepository.findAll();
-    }
-
-    public void saveNews(News news) {
-        newsRepository.save(news);
-    }
-
-    public Optional<News> findById(long id) {
-        return newsRepository.findById(id);
-    }
-
-    public void deleteById(long id) {
-        newsRepository.deleteById(id);
-    }
-
-    public List<News> sortByNew(){
+    public List<News> sortByNew() {
         return newsRepository.selectByNew();
     }
 
-    public List<News> sortByOld(){
+    public List<News> sortByOld() {
         return newsRepository.selectByOld();
     }
- }
+}

@@ -12,19 +12,19 @@ import java.sql.Date;
 @Builder
 @Entity
 @Table
-public class News {
+public class News extends Model {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false, columnDefinition="TEXT")
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
-    @Column(nullable = false, columnDefinition="TEXT")
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String imgSrc;
 
-    @Column(nullable = false,columnDefinition="DATE")
+    @Column(nullable = false, columnDefinition = "DATE")
     private Date date;
 }
