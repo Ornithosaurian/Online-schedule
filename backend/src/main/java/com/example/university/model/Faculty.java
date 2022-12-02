@@ -5,14 +5,14 @@ import lombok.*;
 
 import java.util.List;
 
-@Getter
+@Getter //FIXME
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
 @Table
-public class Faculty {
+public class Faculty extends Model{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
