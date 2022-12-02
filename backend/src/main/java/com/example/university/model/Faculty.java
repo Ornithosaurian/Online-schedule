@@ -28,6 +28,16 @@ public class Faculty {
     @Column(nullable = false, columnDefinition="TEXT")
     private String description;
 
+    @Column(nullable = false, columnDefinition="TEXT")
+    private String imgSrc;
+
+    @OneToMany(targetEntity = Department.class, cascade = CascadeType.ALL)
+    private List<Department> departments;
+
+    public List<Department> getDepartments() {
+        return departments;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -42,16 +52,6 @@ public class Faculty {
 
     public void setImgSrc(String imgSrc) {
         this.imgSrc = imgSrc;
-    }
-
-    @Column(nullable = false, columnDefinition="TEXT")
-    private String imgSrc;
-
-    @OneToMany(targetEntity = Department.class, cascade = CascadeType.ALL)
-    private List<Department> departments;
-
-    public List<Department> getDepartments() {
-        return departments;
     }
 
     public void setDepartments(List<Department> departments) {

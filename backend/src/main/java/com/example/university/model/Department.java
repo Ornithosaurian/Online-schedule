@@ -24,6 +24,9 @@ public class Department {
     @Column(nullable = false, columnDefinition="TEXT")
     private String description;
 
+    @Column(nullable = false, columnDefinition="TEXT")
+    private String imgSrc;
+
     public String getDescription() {
         return description;
     }
@@ -39,9 +42,6 @@ public class Department {
     public void setImgSrc(String imgSrc) {
         this.imgSrc = imgSrc;
     }
-
-    @Column(nullable = false, columnDefinition="TEXT")
-    private String imgSrc;
 
     public long getId() {
         return id;
