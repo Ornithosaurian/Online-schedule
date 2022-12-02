@@ -18,12 +18,13 @@ public class UniversityApplication implements CommandLineRunner {
         SpringApplication.run(UniversityApplication.class, args);
     }
 
-// test data for News, Faculty
+    // test data for News, Faculty
     @Autowired
     public UniversityApplication(NewsService newsService, FacultyService facultyService) {
         this.newsService = newsService;
         this.facultyService = facultyService;
     }
+
     private final NewsService newsService;
     private final FacultyService facultyService;
 
@@ -47,8 +48,8 @@ public class UniversityApplication implements CommandLineRunner {
                 .date(curDate)
                 .build();
 
-        newsService.saveNews(news1);
-        newsService.saveNews(news2);
+        newsService.save(news1);
+        newsService.save(news2);
 
         Faculty faculty1 = Faculty.builder()
                 .name("test1")
@@ -64,7 +65,7 @@ public class UniversityApplication implements CommandLineRunner {
                 .imgSrc("./img/faculty/test2.png")
                 .build();
 
-        facultyService.saveFaculty(faculty1);
-        facultyService.saveFaculty(faculty2);
+        facultyService.save(faculty1);
+        facultyService.save(faculty2);
     }
 }

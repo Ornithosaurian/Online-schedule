@@ -1,6 +1,5 @@
 package com.example.university.controller;
 
-import com.example.university.exception.ResourceNotFoundException;
 import com.example.university.model.Model;
 import com.example.university.service.BaseService;
 import org.springframework.http.HttpStatus;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("http://localhost:5173")
 public abstract class BaseController {
     private final BaseService baseService;
 

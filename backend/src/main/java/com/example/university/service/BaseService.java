@@ -1,12 +1,12 @@
 package com.example.university.service;
 
-import com.example.university.model.Faculty;
 import com.example.university.model.Model;
 import com.example.university.repository.BaseRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
 @Service
 public abstract class BaseService {
     private final BaseRepository baseRepository;
@@ -23,7 +23,7 @@ public abstract class BaseService {
         baseRepository.save(model);
     }
 
-    public Optional<Faculty> findById(long id) {
+    public Optional<Model> findById(long id) {
         return baseRepository.findById(id);
     }
 
