@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/faculties")
-@CrossOrigin("http://localhost:5173")
 public class FacultyController extends BaseController {
 
     private final FacultyService facultyService;
@@ -25,16 +24,16 @@ public class FacultyController extends BaseController {
 
     @Override
     @GetMapping("/{id}")
-    public ResponseEntity<Model> getById(@PathVariable("id")long id) {
-        Faculty faculty = facultyService.findById(id)
+    public ResponseEntity<Model> getById(@PathVariable("id") long id) {
+        Faculty faculty = (Faculty) facultyService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Not found " + Faculty.class.getSimpleName() + " with id = " + id));
         return new ResponseEntity<>(faculty, HttpStatus.OK);
     }
 
     @Override
     @PutMapping("/{id}")
-    public ResponseEntity<HttpStatus> update(@PathVariable("id")long id, @RequestBody Model model) {
-        Faculty updatedFaculty = facultyService.findById(id)
+    public ResponseEntity<HttpStatus> update(@PathVariable("id") long id, @RequestBody Model model) {
+        Faculty updatedFaculty = (Faculty) facultyService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Not found " + Faculty.class.getSimpleName() + " with id = " + id));
         Faculty faculty = (Faculty) model;
 
@@ -44,7 +43,7 @@ public class FacultyController extends BaseController {
         updatedFaculty.setImgSrc(faculty.getImgSrc());
         updatedFaculty.setDepartments(faculty.getDepartments());
 
-        facultyService.saveFaculty(updatedFaculty);
+        facultyService.save(updatedFaculty);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
