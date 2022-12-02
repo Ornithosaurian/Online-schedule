@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/news")
 @CrossOrigin("http://localhost:5173")
 public class NewsController {
 
@@ -21,7 +21,7 @@ public class NewsController {
         this.newsService = newsService;
     }
 
-    @GetMapping("/news")
+    @GetMapping()
     public ResponseEntity<List<News>> getAllNews() {
         List<News> newsList = newsService.getNewsList();
         if (newsList.isEmpty()) {
@@ -31,20 +31,20 @@ public class NewsController {
         return new ResponseEntity<>(newsList, HttpStatus.OK);
     }
 
-    @GetMapping("/news/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<News> getNewsById(@PathVariable("id") long id){
         News news = newsService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + id));
         return new ResponseEntity<>(news, HttpStatus.OK);
     }
 
-    @PostMapping("/news")
+    @PostMapping()
     public ResponseEntity<HttpStatus> createNews(@RequestBody News news){
         newsService.saveNews(news);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PutMapping("/news/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<HttpStatus> updateNews(@PathVariable("id") long id, @RequestBody News news){
         News updatedNews = newsService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + id));
@@ -58,12 +58,12 @@ public class NewsController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/news/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteNews(@PathVariable("id") long id){
         newsService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    @GetMapping("/news/sortByNew")
+    @GetMapping("/sortByNew")
     public ResponseEntity<List<News>> sortByNew(){
         List<News> orderedList = newsService.sortByNew();
         if (orderedList.isEmpty()) {
@@ -73,7 +73,7 @@ public class NewsController {
         return new ResponseEntity<>(orderedList, HttpStatus.OK);
     }
 
-    @GetMapping("/news/sortByOld")
+    @GetMapping("/sortByOld")
     public ResponseEntity<List<News>> sortByOld(){
         List<News> orderedList = newsService.sortByOld();
         if (orderedList.isEmpty()) {
