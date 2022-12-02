@@ -46,35 +46,4 @@ public class FacultyController extends BaseController {
         facultyService.save(updatedFaculty);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-
-//    public ResponseEntity<HttpStatus> update(@PathVariable("id") long id, @RequestBody Faculty faculty) {
-//        Faculty updatedFaculty = facultyService.findById(id)
-//                .orElseThrow(() -> new ResourceNotFoundException("Not found Faculty with id = " + id));
-//
-//        updatedFaculty.setName(faculty.getName());
-//        updatedFaculty.setShortName(faculty.getShortName());
-//        updatedFaculty.setDescription(faculty.getDescription());
-//        updatedFaculty.setImgSrc(faculty.getImgSrc());
-//        updatedFaculty.setDepartments(faculty.getDepartments());
-//
-//        facultyService.saveFaculty(updatedFaculty);
-//        return new ResponseEntity<>(HttpStatus.OK);
-//    }
-//
-//    @Override
-//    @PutMapping("/{id}")
-//    public ResponseEntity<HttpStatus> update(@PathVariable long id, @RequestBody Model model) {
-//        Faculty updatedFaculty = facultyService.findById(id)
-//                .orElseThrow(() -> new ResourceNotFoundException("Not found Faculty with id = " + id));
-//
-//        updatedFaculty.setName(faculty.getName());
-//        updatedFaculty.setShortName(faculty.getShortName());
-//        updatedFaculty.setDescription(faculty.getDescription());
-//        updatedFaculty.setImgSrc(faculty.getImgSrc());
-//        updatedFaculty.setDepartments(faculty.getDepartments());
-//
-//        facultyService.saveFaculty(updatedFaculty);
-//        return new ResponseEntity<>(HttpStatus.OK);
-//    }
 }
