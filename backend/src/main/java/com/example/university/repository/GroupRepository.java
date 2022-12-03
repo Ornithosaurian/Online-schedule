@@ -1,6 +1,6 @@
 package com.example.university.repository;
 
-import com.example.university.model.Group;
+import com.example.university.model.UnGroup;
 
-public interface GroupRepository extends BaseRepository<Group, Long>{
+public interface GroupRepository extends BaseRepository<UnGroup, Long>{
 }

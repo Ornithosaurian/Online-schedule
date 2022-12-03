@@ -5,6 +5,7 @@ import com.example.university.model.Faculty;
 import com.example.university.model.News;
 import com.example.university.service.DepartmentService;
 import com.example.university.service.FacultyService;
+import com.example.university.service.GroupService;
 import com.example.university.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -24,15 +25,17 @@ public class UniversityApplication implements CommandLineRunner {
 
     // test data for News, Faculty, Department
     @Autowired
-    public UniversityApplication(NewsService newsService, FacultyService facultyService, DepartmentService departmentService) {
+    public UniversityApplication(NewsService newsService, FacultyService facultyService, DepartmentService departmentService, GroupService groupService) {
         this.newsService = newsService;
         this.facultyService = facultyService;
         this.departmentService = departmentService;
+        this.groupService = groupService;
     }
 
     private final NewsService newsService;
     private final FacultyService facultyService;
     private final DepartmentService departmentService;
+    private final GroupService groupService;
 
     @Override
     public void run(String... arg) throws Exception {
@@ -108,5 +111,11 @@ public class UniversityApplication implements CommandLineRunner {
 
         facultyService.save(faculty1);
         facultyService.save(faculty2);
+
+//        Group group = Group.builder()
+//                .name("Test-1")
+//                .course("1 magistrate")
+//                .build();
+//        groupService.save(group);
     }
 }

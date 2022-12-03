@@ -10,11 +10,12 @@ import lombok.*;
 @Builder
 @Entity
 @Table
-public class Group extends Model{
+public class UnGroup extends Model{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
 
     @Column(nullable = false, columnDefinition="VARCHAR(100)")
     private String name;
