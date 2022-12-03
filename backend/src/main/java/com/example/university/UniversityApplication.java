@@ -55,11 +55,31 @@ public class UniversityApplication implements CommandLineRunner {
         newsService.save(news1);
         newsService.save(news2);
 
+        UnGroup group1 = UnGroup.builder()
+                .name("Test-1")
+                .course("1 magistrate")
+                .build();
+
+        UnGroup group2 = UnGroup.builder()
+                .name("Test-2")
+                .course("3 magistrate")
+                .build();
+
+        groupService.save(group1);
+        groupService.save(group2);
+
+        List<UnGroup> groups1 = new ArrayList<>();
+        List<UnGroup> groups2 = new ArrayList<>();
+
+        groups1.add(group1);
+        groups2.add(group2);
+
         Department department1 = Department.builder()
                 .name("test1ForFaculty1")
                 .shortName("T1FF1")
                 .description("firsts description for department_faculty1")
                 .imgSrc("./img/faculty/test1.png")
+                .groups(groups1)
                 .build();
 
         Department department2 = Department.builder()
@@ -74,6 +94,7 @@ public class UniversityApplication implements CommandLineRunner {
                 .shortName("T2FF1")
                 .description("second description for department_faculty1")
                 .imgSrc("./img/faculty/test1.png")
+                .groups(groups2)
                 .build();
 
 
@@ -106,18 +127,5 @@ public class UniversityApplication implements CommandLineRunner {
 
         facultyService.save(faculty1);
         facultyService.save(faculty2);
-
-        UnGroup group1 = UnGroup.builder()
-                .name("Test-1")
-                .course("1 magistrate")
-                .build();
-
-        UnGroup group2 = UnGroup.builder()
-                .name("Test-2")
-                .course("3 magistrate")
-                .build();
-
-        groupService.save(group1);
-        groupService.save(group2);
     }
 }
