@@ -3,6 +3,8 @@ package com.example.university.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -22,4 +24,7 @@ public class UnGroup extends Model{
 
     @Column(nullable = false, columnDefinition="VARCHAR(50)")
     private String course;
+
+    @OneToMany(targetEntity = Student.class)
+    private List<Student> students;
 }
