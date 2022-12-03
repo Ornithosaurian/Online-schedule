@@ -5,7 +5,7 @@ import lombok.*;
 
 import java.util.List;
 
-@Getter //FIXME
+@Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
