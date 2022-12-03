@@ -26,7 +26,7 @@ public class FacultyController extends BaseController {
     @GetMapping("/{id}")
     public ResponseEntity<Model> getById(@PathVariable("id") long id) {
         Faculty faculty = (Faculty) facultyService.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Not found " + Faculty.class.getSimpleName() + " with id = " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Not found " + Faculty.class + " with id = " + id));
         return new ResponseEntity<>(faculty, HttpStatus.OK);
     }
 
@@ -34,7 +34,7 @@ public class FacultyController extends BaseController {
     @PutMapping("/{id}")
     public ResponseEntity<HttpStatus> update(@PathVariable("id") long id, @RequestBody Model model) {
         Faculty updatedFaculty = (Faculty) facultyService.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Not found " + Faculty.class.getSimpleName() + " with id = " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Not found " + Faculty.class + " with id = " + id));
         Faculty faculty = (Faculty) model;
 
         updatedFaculty.setName(faculty.getName());

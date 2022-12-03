@@ -27,7 +27,7 @@ public class NewsController extends BaseController {
     @GetMapping("/{id}")
     public ResponseEntity<Model> getById(@PathVariable("id") long id) {
         News news = (News) newsService.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Not found Tutorial with id = " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Not found " + News.class + " with id = " + id));
         return new ResponseEntity<>(news, HttpStatus.OK);
     }
 
@@ -35,7 +35,7 @@ public class NewsController extends BaseController {
     @PutMapping("/{id}")
     public ResponseEntity<HttpStatus> update(@PathVariable long id, @RequestBody Model model) {
         News updatedNews = (News) newsService.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Not found " + News.class.getSimpleName() + " with id = " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Not found " + News.class + " with id = " + id));
         News news = (News) model;
 
         updatedNews.setTitle(news.getTitle());
