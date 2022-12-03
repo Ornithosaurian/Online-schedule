@@ -1,12 +1,7 @@
 package com.example.university;
 
-import com.example.university.model.Department;
-import com.example.university.model.Faculty;
-import com.example.university.model.News;
-import com.example.university.service.DepartmentService;
-import com.example.university.service.FacultyService;
-import com.example.university.service.GroupService;
-import com.example.university.service.NewsService;
+import com.example.university.model.*;
+import com.example.university.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -23,7 +18,7 @@ public class UniversityApplication implements CommandLineRunner {
         SpringApplication.run(UniversityApplication.class, args);
     }
 
-    // test data for News, Faculty, Department
+    // test data for News, Faculty, Department, UnGroup
     @Autowired
     public UniversityApplication(NewsService newsService, FacultyService facultyService, DepartmentService departmentService, GroupService groupService) {
         this.newsService = newsService;
@@ -112,10 +107,17 @@ public class UniversityApplication implements CommandLineRunner {
         facultyService.save(faculty1);
         facultyService.save(faculty2);
 
-//        Group group = Group.builder()
-//                .name("Test-1")
-//                .course("1 magistrate")
-//                .build();
-//        groupService.save(group);
+        UnGroup group1 = UnGroup.builder()
+                .name("Test-1")
+                .course("1 magistrate")
+                .build();
+
+        UnGroup group2 = UnGroup.builder()
+                .name("Test-2")
+                .course("3 magistrate")
+                .build();
+
+        groupService.save(group1);
+        groupService.save(group2);
     }
 }
