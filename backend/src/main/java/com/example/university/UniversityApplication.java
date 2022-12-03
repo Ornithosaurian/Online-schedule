@@ -20,17 +20,19 @@ public class UniversityApplication implements CommandLineRunner {
 
     // test data for News, Faculty, Department, UnGroup
     @Autowired
-    public UniversityApplication(NewsService newsService, FacultyService facultyService, DepartmentService departmentService, GroupService groupService) {
+    public UniversityApplication(NewsService newsService, FacultyService facultyService, DepartmentService departmentService, GroupService groupService, StudentService studentService) {
         this.newsService = newsService;
         this.facultyService = facultyService;
         this.departmentService = departmentService;
         this.groupService = groupService;
+        this.studentService = studentService;
     }
 
     private final NewsService newsService;
     private final FacultyService facultyService;
     private final DepartmentService departmentService;
     private final GroupService groupService;
+    private final StudentService studentService;
 
     @Override
     public void run(String... arg) throws Exception {
@@ -55,14 +57,41 @@ public class UniversityApplication implements CommandLineRunner {
         newsService.save(news1);
         newsService.save(news2);
 
+        Student student1 = Student.builder()
+                .name("Arkadii")
+                .surname("Momot")
+                .patronymic("Romanovych")
+                .email("test@gmail.com")
+                .phone("+380784216875")
+                .build();
+
+        Student student2 = Student.builder()
+                .name("test")
+                .surname("testerenko")
+                .patronymic("testuvovych")
+                .email("test1@gmail.com")
+                .phone("+380561427852")
+                .build();
+
+        studentService.save(student1);
+        studentService.save(student2);
+
+        List<Student> students1 = new ArrayList<>();
+        List<Student> students2 = new ArrayList<>();
+
+        students1.add(student1);
+        students2.add(student2);
+
         UnGroup group1 = UnGroup.builder()
                 .name("Test-1")
                 .course("1 magistrate")
+                .students(students1)
                 .build();
 
         UnGroup group2 = UnGroup.builder()
                 .name("Test-2")
                 .course("3 magistrate")
+                .students(students2)
                 .build();
 
         groupService.save(group1);
