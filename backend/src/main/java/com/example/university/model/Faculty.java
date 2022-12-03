@@ -29,6 +29,6 @@ public class Faculty extends Model{
     @Column(nullable = false, columnDefinition="TEXT")
     private String imgSrc;
 
-    @OneToMany(targetEntity = Department.class, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Department.class)
     private List<Department> departments;
 }
