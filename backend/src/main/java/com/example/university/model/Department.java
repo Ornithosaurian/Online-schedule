@@ -10,7 +10,7 @@ import lombok.*;
 @Builder
 @Entity
 @Table
-public class Department {
+public class Department extends Model{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -19,7 +19,7 @@ public class Department {
     private String name;
 
     @Column(nullable = false, columnDefinition="VARCHAR(10)")
-    private String ShortName;
+    private String shortName;
 
     @Column(nullable = false, columnDefinition="TEXT")
     private String description;
