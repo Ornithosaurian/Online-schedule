@@ -3,6 +3,8 @@ package com.example.university.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -26,4 +28,7 @@ public class Department extends Model{
 
     @Column(nullable = false, columnDefinition="TEXT")
     private String imgSrc;
+
+    @OneToMany(targetEntity = UnGroup.class)
+    private List<UnGroup> groups;
 }
