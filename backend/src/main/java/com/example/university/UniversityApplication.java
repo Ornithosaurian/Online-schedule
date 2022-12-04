@@ -18,14 +18,15 @@ public class UniversityApplication implements CommandLineRunner {
         SpringApplication.run(UniversityApplication.class, args);
     }
 
-    // test data for News, Faculty, Department, UnGroup
+    // test data for News, Faculty, Department, UnGroup, Discipline
     @Autowired
-    public UniversityApplication(NewsService newsService, FacultyService facultyService, DepartmentService departmentService, GroupService groupService, StudentService studentService) {
+    public UniversityApplication(NewsService newsService, FacultyService facultyService, DepartmentService departmentService, GroupService groupService, StudentService studentService, DisciplineService disciplineService) {
         this.newsService = newsService;
         this.facultyService = facultyService;
         this.departmentService = departmentService;
         this.groupService = groupService;
         this.studentService = studentService;
+        this.disciplineService = disciplineService;
     }
 
     private final NewsService newsService;
@@ -33,6 +34,7 @@ public class UniversityApplication implements CommandLineRunner {
     private final DepartmentService departmentService;
     private final GroupService groupService;
     private final StudentService studentService;
+    private final DisciplineService disciplineService;
 
     @Override
     public void run(String... arg) throws Exception {
@@ -156,5 +158,16 @@ public class UniversityApplication implements CommandLineRunner {
 
         facultyService.save(faculty1);
         facultyService.save(faculty2);
+
+        Discipline discipline1 = Discipline.builder()
+                .name("Something1")
+                .build();
+
+        Discipline discipline2 = Discipline.builder()
+                .name("Something2")
+                .build();
+
+        disciplineService.save(discipline1);
+        disciplineService.save(discipline2);
     }
 }
