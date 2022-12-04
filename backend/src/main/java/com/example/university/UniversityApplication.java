@@ -18,15 +18,16 @@ public class UniversityApplication implements CommandLineRunner {
         SpringApplication.run(UniversityApplication.class, args);
     }
 
-    // test data for News, Faculty, Department, UnGroup, Discipline
+    // test data for News, Faculty, Department, UnGroup, Discipline, Teacher
     @Autowired
-    public UniversityApplication(NewsService newsService, FacultyService facultyService, DepartmentService departmentService, GroupService groupService, StudentService studentService, DisciplineService disciplineService) {
+    public UniversityApplication(NewsService newsService, FacultyService facultyService, DepartmentService departmentService, GroupService groupService, StudentService studentService, DisciplineService disciplineService, TeacherService teacherService) {
         this.newsService = newsService;
         this.facultyService = facultyService;
         this.departmentService = departmentService;
         this.groupService = groupService;
         this.studentService = studentService;
         this.disciplineService = disciplineService;
+        this.teacherService = teacherService;
     }
 
     private final NewsService newsService;
@@ -35,6 +36,7 @@ public class UniversityApplication implements CommandLineRunner {
     private final GroupService groupService;
     private final StudentService studentService;
     private final DisciplineService disciplineService;
+    private final TeacherService teacherService;
 
     @Override
     public void run(String... arg) throws Exception {
@@ -169,5 +171,24 @@ public class UniversityApplication implements CommandLineRunner {
 
         disciplineService.save(discipline1);
         disciplineService.save(discipline2);
+
+        Teacher teacher1 = Teacher.builder()
+                .name("Teacher1")
+                .surname("Teacherenko")
+                .patronymic("Teacherovych")
+                .email("teacher1@gmail.com")
+                .phone("+380784216875")
+                .build();
+
+        Teacher teacher2 = Teacher.builder()
+                .name("Teacher2")
+                .surname("Teacherenko")
+                .patronymic("Teacherovych")
+                .email("teacher2@gmail.com")
+                .phone("+380561427852")
+                .build();
+
+        teacherService.save(teacher1);
+        teacherService.save(teacher2);
     }
 }
