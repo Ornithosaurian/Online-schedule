@@ -20,7 +20,7 @@ public class UniversityApplication implements CommandLineRunner {
 
     // test data for News, Faculty, Department, UnGroup, Discipline, Teacher
     @Autowired
-    public UniversityApplication(NewsService newsService, FacultyService facultyService, DepartmentService departmentService, GroupService groupService, StudentService studentService, DisciplineService disciplineService, TeacherService teacherService) {
+    public UniversityApplication(NewsService newsService, FacultyService facultyService, DepartmentService departmentService, GroupService groupService, StudentService studentService, DisciplineService disciplineService, TeacherService teacherService, ScheduleService scheduleService) {
         this.newsService = newsService;
         this.facultyService = facultyService;
         this.departmentService = departmentService;
@@ -28,6 +28,7 @@ public class UniversityApplication implements CommandLineRunner {
         this.studentService = studentService;
         this.disciplineService = disciplineService;
         this.teacherService = teacherService;
+        this.scheduleService = scheduleService;
     }
 
     private final NewsService newsService;
@@ -37,6 +38,7 @@ public class UniversityApplication implements CommandLineRunner {
     private final StudentService studentService;
     private final DisciplineService disciplineService;
     private final TeacherService teacherService;
+    private final ScheduleService scheduleService;
 
     @Override
     public void run(String... arg) throws Exception {
@@ -190,5 +192,26 @@ public class UniversityApplication implements CommandLineRunner {
 
         teacherService.save(teacher1);
         teacherService.save(teacher2);
+
+        Schedule schedule1 = Schedule.builder()
+                .name("schedule1")
+                .teacher(teacher1)
+                .discipline(discipline1)
+                .group(group1)
+                .time("12:00")
+                .classroom("56")
+                .build();
+
+        Schedule schedule2 = Schedule.builder()
+                .name("schedule2")
+                .teacher(teacher2)
+                .discipline(discipline2)
+                .group(group2)
+                .time("13:00")
+                .classroom("67")
+                .build();
+
+        studentService.save(schedule1);
+        studentService.save(schedule2);
     }
 }
