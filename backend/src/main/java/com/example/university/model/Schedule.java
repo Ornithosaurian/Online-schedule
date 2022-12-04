@@ -19,13 +19,13 @@ public class Schedule extends Model {
     @Column(nullable = false, columnDefinition = "VARCHAR(32)")
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = Teacher.class, fetch = FetchType.LAZY)
     private Teacher teacher;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = Discipline.class, fetch = FetchType.LAZY)
     private Discipline discipline;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = UnGroup.class, fetch = FetchType.LAZY)
     private UnGroup group;
 
     @Column(nullable = false, columnDefinition = "VARCHAR(32)")
