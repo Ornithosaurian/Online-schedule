@@ -24,7 +24,7 @@ public class TeacherController extends BaseController {
     @GetMapping("/{id}")
     public ResponseEntity<Model> getById(@PathVariable("id") long id) {
         Teacher teacher = (Teacher) teacherService.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Not found " + News.class + " with id = " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Not found " + Teacher.class + " with id = " + id));
         return new ResponseEntity<>(teacher, HttpStatus.OK);
     }
 
@@ -32,7 +32,7 @@ public class TeacherController extends BaseController {
     @PutMapping("/{id}")
     public ResponseEntity<HttpStatus> update(@PathVariable long id, @RequestBody Model model) {
         Teacher updatedTeacher = (Teacher) teacherService.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Not found " + News.class + " with id = " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Not found " + Teacher.class + " with id = " + id));
         Teacher teacher = (Teacher) model;
 
         updatedTeacher.setName(teacher.getName());

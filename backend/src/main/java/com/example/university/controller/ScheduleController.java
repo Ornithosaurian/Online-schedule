@@ -26,7 +26,7 @@ public class ScheduleController extends BaseController{
     @GetMapping("/{id}")
     public ResponseEntity<Model> getById(@PathVariable("id") long id) {
         Schedule schedule = (Schedule) scheduleService.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Not found " + News.class + " with id = " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Not found " + Schedule.class + " with id = " + id));
         return new ResponseEntity<>(schedule, HttpStatus.OK);
     }
 
@@ -34,7 +34,7 @@ public class ScheduleController extends BaseController{
     @PutMapping("/{id}")
     public ResponseEntity<HttpStatus> update(@PathVariable long id, @RequestBody Model model) {
         Schedule updatedSchedule = (Schedule) scheduleService.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Not found " + News.class + " with id = " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Not found " + Schedule.class + " with id = " + id));
         Schedule schedule = (Schedule) model;
 
         updatedSchedule.setName(schedule.getName());
