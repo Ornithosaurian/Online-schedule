@@ -33,4 +33,6 @@ public class Schedule extends Model {
 
     @Column(nullable = false, columnDefinition = "VARCHAR(32)")
     private String classroom;
+    @Column(nullable = false, columnDefinition = "VARCHAR(32)")
+    private String day;
 }

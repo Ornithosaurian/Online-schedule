@@ -200,6 +200,7 @@ public class UniversityApplication implements CommandLineRunner {
                 .group(group1)
                 .time("12:00")
                 .classroom("56")
+                .day("Monday")
                 .build();
 
         Schedule schedule2 = Schedule.builder()
@@ -209,6 +210,7 @@ public class UniversityApplication implements CommandLineRunner {
                 .group(group2)
                 .time("13:00")
                 .classroom("67")
+                .day("Sunday")
                 .build();
 
         studentService.save(schedule1);

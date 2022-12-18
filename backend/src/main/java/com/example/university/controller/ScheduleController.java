@@ -2,7 +2,6 @@ package com.example.university.controller;
 
 import com.example.university.exception.ResourceNotFoundException;
 import com.example.university.model.Model;
-import com.example.university.model.News;
 import com.example.university.model.Schedule;
 import com.example.university.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +42,7 @@ public class ScheduleController extends BaseController{
         updatedSchedule.setGroup(schedule.getGroup());
         updatedSchedule.setTime(schedule.getTime());
         updatedSchedule.setClassroom(schedule.getClassroom());
+        updatedSchedule.setDay(schedule.getDay());
 
         scheduleService.save(updatedSchedule);
         return new ResponseEntity<>(HttpStatus.OK);
