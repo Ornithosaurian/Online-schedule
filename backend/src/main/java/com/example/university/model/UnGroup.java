@@ -24,7 +24,7 @@ public class UnGroup extends Model{
     @Column(nullable = false, columnDefinition="VARCHAR(100)")
     private String name;
 
-    @Column(nullable = false, columnDefinition="VARCHAR(50)")
+    @Column(nullable = false, columnDefinition="VARCHAR(100)")
     private String course;
 
     @OneToMany(targetEntity = Student.class)

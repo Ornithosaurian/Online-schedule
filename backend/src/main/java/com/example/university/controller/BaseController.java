@@ -39,6 +39,7 @@ public abstract class BaseController {
     @PutMapping("/{id}")
     public abstract ResponseEntity<HttpStatus> update(@PathVariable("id") long id, @RequestBody Model model);
 
+
     @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> delete(@PathVariable("id") long id) {
         baseService.deleteById(id);

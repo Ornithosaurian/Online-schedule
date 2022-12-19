@@ -20,7 +20,7 @@ public class Faculty extends Model{
     @Column(nullable = false, columnDefinition="VARCHAR(100)")
     private String name;
 
-    @Column(nullable = false, columnDefinition="VARCHAR(10)")
+    @Column(nullable = false, columnDefinition="VARCHAR(100)")
     private String shortName;
 
     @Column(nullable = false, columnDefinition="TEXT")
