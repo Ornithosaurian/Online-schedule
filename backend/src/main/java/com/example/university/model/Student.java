@@ -30,4 +30,7 @@ public class Student extends Model {
 
     @Column(nullable = false, columnDefinition = "VARCHAR(13)")
     private String phone;
+
+    @ManyToOne(targetEntity = UnGroup.class, fetch = FetchType.LAZY)
+    private UnGroup unGroup;
 }

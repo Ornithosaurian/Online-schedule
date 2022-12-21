@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -14,19 +15,23 @@ import java.util.List;
 @Builder
 @Entity
 @Table
-public class UnGroup extends Model{
+public class UnGroup extends Model {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
 
-    @Column(nullable = false, columnDefinition="VARCHAR(100)")
+    @Column(nullable = false, columnDefinition = "VARCHAR(100)")
     private String name;
 
-    @Column(nullable = false, columnDefinition="VARCHAR(100)")
+    @Column(nullable = false, columnDefinition = "VARCHAR(100)")
     private String course;
 
-    @OneToMany(targetEntity = Student.class)
-    private List<Student> students;
+    @OneToMany(targetEntity = Student.class,
+            cascade = {CascadeType.REMOVE, CascadeType.REFRESH}, orphanRemoval = true)
+    private List<Student> students = new ArrayList<>();
+
+    @ManyToOne(targetEntity = Department.class, fetch = FetchType.LAZY)
+    private Department department;
 }
