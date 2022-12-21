@@ -5,9 +5,12 @@ import com.example.university.model.Model;
 import com.example.university.model.Schedule;
 import com.example.university.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/timetables")
@@ -46,5 +49,15 @@ public class ScheduleController extends BaseController{
 
         scheduleService.save(updatedSchedule);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/sort")
+    public ResponseEntity<List<Schedule>> sortByGroupAndDay(@Param("group") String group,
+                                                        @Param("day") String day){
+        List<Schedule> schedulesList = scheduleService.sortByGroupAndDay(group,day);
+        if (schedulesList.isEmpty()) {
+            return new ResponseEntity<>(schedulesList, HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(schedulesList, HttpStatus.OK);
     }
 }
