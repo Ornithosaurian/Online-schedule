@@ -16,7 +16,7 @@
 <script>
 import Header from "../Header.vue";
 import Footer from "../Footer.vue";
-import FacultyService from "../../service/FacultyService.js"
+import FacultyS from "../../services/FacultyS.js"
 
 export default {
   name: "Faculties",
@@ -31,7 +31,7 @@ export default {
   },
   methods:{
     getFaculties(){
-      FacultyService.getFaculties().then((response)=>{
+      FacultyS.get().then((response)=>{
         this.faculties=response.data;
       });
     }

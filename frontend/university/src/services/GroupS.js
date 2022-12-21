@@ -5,7 +5,7 @@ class GroupS{
     get(){
         return http.get('/groups')
     }
-    get(id){
+    getById(id){
         return http.get(`/groups/${id}`)
     }
     delete(id){

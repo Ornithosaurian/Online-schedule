@@ -5,7 +5,7 @@ class TeacherS{
     get(){
         return http.get('/teachers')
     }
-    get(id){
+    getById(id){
         return http.get(`/teachers/${id}`)
     }
     delete(id){

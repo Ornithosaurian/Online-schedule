@@ -4,7 +4,7 @@
   <h1 class="t_h">Teachers</h1>
 <table>
   <tr v-for="teacher in teachers" v-bind:key="teacher.id">
-    <td><router-link :to="`/teachers/${teacher.id}`">{{teacher.surname}} {{teacher.name}} {{teacher.patronymic}}</router-link></td>
+    <td><router-link :to="{name:'teacher', params:{t_id:teacher.id}}">{{teacher.surname}} {{teacher.name}} {{teacher.patronymic}}</router-link></td>
     <td class="edit"><font-awesome-icon class="icon" icon="pen-to-square" /></td>
     <td class="delete"><font-awesome-icon class="icon" icon="trash-can" /></td>
   </tr>
@@ -17,7 +17,7 @@
 <script>
 import Header from "../Header.vue";
 import Footer from "../Footer.vue";
-import TeacherService from "../../service/TeacherService.js"
+import TeacherS from "../../services/TeacherS.js"
 
 export default {
   name: "Teachers",
@@ -32,7 +32,7 @@ export default {
   },
   methods:{
     getTeachers(){
-      TeacherService.getTeachers().then((response)=>{
+      TeacherS.get().then((response)=>{
         this.teachers=response.data;
       });
     }

@@ -1,49 +1,63 @@
 <template>
   <Header class="header"></Header>
-  <h1 class="d_h">Disciplines</h1>
+<h1 class="t_h">Teacher</h1>
+  <div v-if="teacher">
   <table>
-    <tr v-for="discipline in disciplines" v-bind:key="discipline.id">
-      <td><a href="">{{discipline.name}}</a></td>
-      <td class="edit"><font-awesome-icon class="icon" icon="pen-to-square" /></td>
-      <td class="delete"><font-awesome-icon class="icon" icon="trash-can" /></td>
+    <tr>
+      <td>Last name:</td>
+      <td>{{teacher.surname}}</td>
+    </tr>
+    <tr>
+      <td>First name:</td>
+      <td>{{teacher.name}}</td>
+    </tr>
+    <tr>
+      <td>Patronymic:</td>
+      <td>{{teacher.patronymic}}</td>
+    </tr>
+    <tr>
+      <td>Email:</td>
+      <td>{{teacher.email}}</td>
+    </tr>
+    <tr>
+      <td>Phone number:</td>
+      <td>{{teacher.phone}}</td>
     </tr>
   </table>
-
+  </div>
   <Footer class="footer"></Footer>
 </template>
 
 <script>
 import Header from "../Header.vue";
 import Footer from "../Footer.vue";
-import DisciplineS from "../../services/DepartmentS.js"
+import TeacherS from "../../services/TeacherS.js"
 
 export default {
-  name: "Disciplines",
-    components: {
-      Header,
-      Footer
-    },
+  name: "Teacher",
+  components: {
+    Header,
+    Footer
+  },
   data(){
     return{
-      disciplines:[]
+      teacher:null
     }
   },
   methods:{
-    getDisciplines(){
-      DisciplineS.get().then((response)=>{
-        this.disciplines=response.data;
+    getTeacher(id){
+      TeacherS.getById(id).then((response)=>{
+        this.teacher=response.data;
       });
     }
   },
   created(){
-    this.getDisciplines()
-  }
-  }
-
+    this.getTeacher(this.$route.params.t_id)
+  }}
 </script>
 
 <style scoped>
-header{
+.header{
   margin-bottom: 60px;
 }
 
@@ -52,7 +66,7 @@ header{
   bottom:0;
 }
 
-.d_h{
+.t_h{
   color: #42424b;
   text-align: center;
   font-size: 40px;
@@ -62,8 +76,8 @@ header{
 table{
   display: grid;
   grid-row-gap: 5px;
-  width:500px ;
-  margin-left: 300px;
+  width:300px ;
+
 }
 td{
   font-family: sans-serif;
@@ -79,11 +93,10 @@ td a:hover{
 }
 tr{
   display: grid;
-  grid-template-columns: 400px 50px 50px;
-  /*background-color: rgb(218, 218, 222, 0.2);*/
+  grid-template-columns: 200px 250px ;
   background: rgba(126, 192, 227, 0.05);
   border-radius: 5px;
-  margin-left: 200px;
+  margin-left: 550px;
 }
 .icon {
   font-size: 2rem;
@@ -95,4 +108,5 @@ tr{
 .delete{
   color: red;
   text-align: center;
-}</style>
+}
+</style>

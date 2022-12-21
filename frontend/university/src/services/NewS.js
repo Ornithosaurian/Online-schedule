@@ -5,7 +5,7 @@ class NewS{
     get(){
         return http.get('/news')
     }
-    get(id){
+    getById(id){
         return http.get(`/news/${id}`)
     }
     delete(id){
