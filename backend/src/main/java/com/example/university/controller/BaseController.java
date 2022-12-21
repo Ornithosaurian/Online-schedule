@@ -19,12 +19,12 @@ public abstract class BaseController {
 
     @GetMapping()
     public ResponseEntity<List<Model>> getAll() {
-        List<Model> facultiesList = baseService.getAll();
-        if (facultiesList.isEmpty()) {
-            return new ResponseEntity<>(facultiesList, HttpStatus.NO_CONTENT);
+        List<Model> modelList = baseService.getAll();
+        if (modelList.isEmpty()) {
+            return new ResponseEntity<>(modelList, HttpStatus.NO_CONTENT);
         }
 
-        return new ResponseEntity<>(facultiesList, HttpStatus.OK);
+        return new ResponseEntity<>(modelList, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
