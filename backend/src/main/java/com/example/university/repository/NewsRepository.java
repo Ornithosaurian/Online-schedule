@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface NewsRepository extends BaseRepository<News, Long> {
+public interface NewsRepository extends BaseRepository<News> {
 
     @Query(value = "select n from News n order by n.date ASC")
     List<News> selectByNew();
