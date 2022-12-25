@@ -1,5 +1,9 @@
 <template>
   <Header class="header"></Header>
+  <div class="icons">
+    <div class="edit"><font-awesome-icon class="icon" icon="pen-to-square" /></div>
+    <div class="delete" @click="deleteFaculty"><font-awesome-icon class="icon" icon="trash-can" /></div>
+  </div>
   <div v-if="faculty">
     <h1 class="t_h">{{faculty.shortName}}</h1>
 
@@ -30,7 +34,11 @@ export default {
     getFaculty(id){
       FacultyS.getById(id).then((response)=>{
         this.faculty=response.data;
-      });
+      })
+    },
+    deleteFaculty(){
+      FacultyS.delete(this.faculty.id).then(response=>{console.log('Deleted successfully')})
+      this.$router.push({name:'faculties'})
     }
   },
   created(){
@@ -39,6 +47,11 @@ export default {
 </script>
 
 <style scoped>
+.icons{
+  display: grid;
+  grid-template-columns: 50px 50px;
+  grid-column-gap: 10px;
+}
 .ref{
   font-size: 19px;
   font-weight: bold;
@@ -113,4 +126,7 @@ tr{
 .delete{
   color: red;
   text-align: center;}
+.delete:hover{
+  color: black;
+}
 </style>

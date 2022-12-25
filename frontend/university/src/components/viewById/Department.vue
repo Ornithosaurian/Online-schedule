@@ -1,11 +1,15 @@
 <template>
   <Header class="header"></Header>
+  <div class="icons">
+    <div class="edit"><font-awesome-icon class="icon" icon="pen-to-square" /></div>
+    <div class="delete" @click="deleteDepartment"><font-awesome-icon class="icon" icon="trash-can" /></div>
+  </div>
   <div v-if="department">
     <h1 class="t_h">{{department.shortName}}</h1>
 
     <img class="img" :src="department.imgSrc"/>
     <p>{{department.description}}</p>
-    <router-link class="ref" :to="{name:'department', params:{d_id:department.id}}">See groups of department</router-link>
+    <router-link class="ref" :to="{name:'groups', params:{d_id:department.id}}">See groups of department</router-link>
   </div>
   <Footer class="footer"></Footer>
 </template>
@@ -31,6 +35,10 @@ export default {
       DepartmentS.getById(id).then((response)=>{
         this.department=response.data;
       });
+    },
+    deleteDepartment(){
+      DepartmentS.delete(this.department.id).then(response=>{console.log('Deleted successfully')})
+      this.$router.push({name:'faculty_departments'})
     }
   },
   created(){
@@ -40,6 +48,11 @@ export default {
 </script>
 
 <style scoped>
+.icons{
+  display: grid;
+  grid-template-columns: 50px 50px;
+  grid-column-gap: 10px;
+}
 .ref{
   font-size: 19px;
   font-weight: bold;
@@ -114,4 +127,7 @@ tr{
 .delete{
   color: red;
   text-align: center;}
+.delete:hover{
+  color: black;
+}
 </style>
