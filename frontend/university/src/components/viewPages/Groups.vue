@@ -1,12 +1,18 @@
 <template>
   <Header class="header"></Header>
   <div v-if="department">
+    <div class="add"><router-link class="link" :to="{name:'addGroup'}">
+      <font-awesome-icon class="icon" icon="circle-plus" /> Add new Group</router-link></div>
     <h1 class="f_h">Groups of {{department.shortName}}</h1>
     <table>
       <tr v-for="group in department.groups" v-bind:key="group.id">
         <td><router-link :to="{name:'group', params:{g_id:group.id}}">{{group.name}}</router-link></td>
-        <td class="edit"><font-awesome-icon class="icon" icon="pen-to-square" /></td>
-        <td class="delete"><font-awesome-icon class="icon" icon="trash-can" /></td>
+        <td><router-link class="edit" :to="{name:'editGroup', params:{ge_id:group.id}}">
+          <font-awesome-icon class="icon" icon="pen-to-square" />
+        </router-link></td>
+        <td class="delete" @click="deleteGroup">
+          <font-awesome-icon class="icon" icon="trash-can"/>
+        </td>
       </tr>
     </table>
   </div>
@@ -44,6 +50,16 @@ export default {
 </script>
 
 <style scoped>
+.add{
+  margin-left: 30px;
+  width: 250px;
+  font-family: sans-serif;
+  font-size: 20px;
+}
+.link{
+  text-decoration: none;
+  color: cornflowerblue;
+}
 .header{
   margin-bottom: 60px;
 }
@@ -93,8 +109,14 @@ tr{
   color: mediumseagreen;
   text-align: center;
 }
+.edit:hover{
+  color: black;
+}
 .delete{
   color: red;
   text-align: center;
+}
+.delete:hover{
+  color: #000;
 }
 </style>
