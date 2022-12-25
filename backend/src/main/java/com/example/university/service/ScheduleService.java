@@ -5,12 +5,11 @@ import com.example.university.repository.ScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
 @Service
-public class ScheduleService extends BaseService{
+public class ScheduleService extends BaseService<Schedule, ScheduleRepository> {
 
     private final ScheduleRepository scheduleRepository;
 
@@ -21,7 +20,7 @@ public class ScheduleService extends BaseService{
     }
 
     public List<Schedule> sortByGroupAndDay(@Param("group") String groupName,
-                                     @Param("day") String day){
-        return scheduleRepository.selectByGroupAndDay(groupName,day);
+                                            @Param("day") String day) {
+        return scheduleRepository.selectByGroupAndDay(groupName, day);
     }
 }

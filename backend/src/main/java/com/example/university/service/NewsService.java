@@ -6,10 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class NewsService extends BaseService {
+public class NewsService extends BaseService<News, NewsRepository> {
 
     private final NewsRepository newsRepository;
 

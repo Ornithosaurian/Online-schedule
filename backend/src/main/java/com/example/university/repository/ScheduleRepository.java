@@ -6,7 +6,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface ScheduleRepository extends BaseRepository<Schedule, Long> {
+public interface ScheduleRepository extends BaseRepository<Schedule> {
 
     @Query(value = "select s from Schedule s " +
             "join s.group ug " +

@@ -2,32 +2,34 @@ package com.example.university.service;
 
 import com.example.university.model.Model;
 import com.example.university.repository.BaseRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public abstract class BaseService {
-    private final BaseRepository baseRepository;
+public abstract class BaseService<M extends Model, R extends BaseRepository> {
+    private final R R;
 
-    public BaseService(BaseRepository baseRepository) {
-        this.baseRepository = baseRepository;
+    @Autowired
+    public BaseService(R Repository) {
+        this.R = Repository;
     }
 
-    public List<Model> getAll() {
-        return baseRepository.findAll();
+    public List<M> getAll() {
+        return R.findAll();
     }
 
-    public void save(Model model) {
-        baseRepository.save(model);
+    public void save(M m) {
+        R.save(m);
     }
 
-    public Optional<Model> findById(long id) {
-        return baseRepository.findById(id);
+    public Optional<M> findById(long id) {
+        return R.findById(id);
     }
 
     public void deleteById(long id) {
-        baseRepository.deleteById(id);
+        R.deleteById(id);
     }
 }

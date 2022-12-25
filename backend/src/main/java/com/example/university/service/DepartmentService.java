@@ -1,13 +1,14 @@
 package com.example.university.service;
 
+import com.example.university.model.Department;
 import com.example.university.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DepartmentService extends BaseService{
+public class DepartmentService extends BaseService<Department, DepartmentRepository> {
 
-    private DepartmentRepository departmentRepository;
+    private final DepartmentRepository departmentRepository;
 
     @Autowired
     public DepartmentService(DepartmentRepository departmentRepository) {

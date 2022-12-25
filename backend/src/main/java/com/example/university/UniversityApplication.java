@@ -230,6 +230,7 @@ public class UniversityApplication implements CommandLineRunner {
                 .shortName("T2FF1")
                 .description("Description  for department1 faculty1. Cras ornare ultrices metus, id blandit nulla scelerisque a. Quisque dapibus, ligula vehicula posuere egestas, metus elit pharetra justo, ac efficitur leo nisi a magna. Aenean dignissim egestas nisl, a mattis ex vulputate at. Curabitur accumsan tristique massa, ut fermentum nisl mattis et. Fusce quis enim maximus, consequat augue sit amet, mollis enim. Donec bibendum aliquam leo, et sodales dui auctor dapibus. Aenean gravida convallis vehicula. Nulla pellentesque tempus diam, ut aliquam neque venenatis id. In tempor accumsan eros sit amet ultrices. Sed at varius tortor. Nulla euismod justo a mauris commodo hendrerit. Suspendisse potenti.")
                 .imgSrc("https://cdn.vectorstock.com/i/preview-1x/17/01/academy-vector-41571701.jpg")
+                //.groups(groups1)
                 .build();
 
         Department department3 = Department.builder()
@@ -237,7 +238,7 @@ public class UniversityApplication implements CommandLineRunner {
                 .shortName("T3FF1")
                 .description("Description for department1 faculty1. Cras ornare ultrices metus, id blandit nulla scelerisque a. Quisque dapibus, ligula vehicula posuere egestas, metus elit pharetra justo, ac efficitur leo nisi a magna. Aenean dignissim egestas nisl, a mattis ex vulputate at. Curabitur accumsan tristique massa, ut fermentum nisl mattis et. Fusce quis enim maximus, consequat augue sit amet, mollis enim. Donec bibendum aliquam leo, et sodales dui auctor dapibus. Aenean gravida convallis vehicula. Nulla pellentesque tempus diam, ut aliquam neque venenatis id. In tempor accumsan eros sit amet ultrices. Sed at varius tortor. Nulla euismod justo a mauris commodo hendrerit. Suspendisse potenti.")
                 .imgSrc("https://cdn.vectorstock.com/i/preview-1x/17/01/academy-vector-41571701.jpg")
-//                .groups(groups2)
+                //.groups(groups1)
                 .build();
 //        Department department1 = Department.builder()
 //                .name("test1ForFaculty1")
