@@ -2,11 +2,12 @@
 
 <Header class="header"></Header>
   <h1 class="t_h">Teachers</h1>
-<table>
+  <div class="add"><router-link class="link" :to="{name:'addTeacher'}">
+    <font-awesome-icon class="icon" icon="circle-plus" /> Add new teacher</router-link></div>
+  <table>
   <tr v-for="teacher in teachers" v-bind:key="teacher.id">
-    <td><router-link :to="{name:'teacher', params:{t_id:teacher.id}}">{{teacher.surname}} {{teacher.name}} {{teacher.patronymic}}</router-link></td>
-    <td class="edit"><font-awesome-icon class="icon" icon="pen-to-square" /></td>
-    <td class="delete"><font-awesome-icon class="icon" icon="trash-can" /></td>
+    <td><router-link :to="{name:'teacher', params:{t_id:teacher.id}}">
+      {{teacher.surname}} {{teacher.name}} {{teacher.patronymic}}</router-link></td>
   </tr>
 
 </table>
@@ -53,6 +54,16 @@ export default {
   position:relative;
   bottom:0;
 }
+.add{
+  margin-left: 30px;
+  width: 250px;
+  font-family: sans-serif;
+  font-size: 20px;
+}
+.link{
+  text-decoration: none;
+  color: cornflowerblue;
+}
 
 .t_h{
   color: #42424b;
@@ -68,7 +79,7 @@ table{
 }
 td{
   font-family: sans-serif;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
 }
 td a{
@@ -80,11 +91,11 @@ td a:hover{
 }
 tr{
   display: grid;
-  grid-template-columns: 1000px 50px 50px;
-  /*background-color: rgb(218, 218, 222, 0.2);*/
+  grid-template-columns: 500px;
+  grid-row-gap: 100px;
   background: rgba(126, 192, 227, 0.05);
   border-radius: 5px;
-  margin-left: 200px;
+  margin-left: 500px;
 }
 .icon {
   font-size: 2rem;

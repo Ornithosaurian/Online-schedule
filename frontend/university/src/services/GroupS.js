@@ -11,5 +11,11 @@ class GroupS{
     delete(id){
         return http.delete(`/groups/${id}`)
     }
+    update(id,data){
+        return http.put(`/groups/${id}`,data)
+    }
+    add(data){
+        return http.post('/groups',data)
+    }
 }
 export default new GroupS();

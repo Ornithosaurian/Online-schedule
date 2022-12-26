@@ -1,11 +1,16 @@
 <template>
   <Header class="header"></Header>
+
   <h1 class="d_h">Disciplines</h1>
+  <div class="add"><router-link class="link" :to="{name:'addDiscipline'}">
+    <font-awesome-icon class="icon" icon="circle-plus" /> Add new discipline</router-link></div>
   <table>
     <tr v-for="discipline in disciplines" v-bind:key="discipline.id">
-      <td><a href="">{{discipline.name}}</a></td>
-      <td class="edit"><font-awesome-icon class="icon" icon="pen-to-square" /></td>
-      <td class="delete"><font-awesome-icon class="icon" icon="trash-can" /></td>
+      <td>{{discipline.name}}</td>
+      <td><router-link class="edit" :to="{name:'discipline_edit', params:{ds_id:discipline.id}}">
+        <font-awesome-icon class="icon" icon="pen-to-square" />
+      </router-link></td>
+      <td class="delete" @click="deleteDiscipline(discipline.id)"><font-awesome-icon class="icon" icon="trash-can" /></td>
     </tr>
   </table>
 
@@ -15,7 +20,7 @@
 <script>
 import Header from "../Header.vue";
 import Footer from "../Footer.vue";
-import DisciplineS from "../../services/DepartmentS.js"
+import DisciplineS from "../../services/DisciplineS.js"
 
 export default {
   name: "Disciplines",
@@ -32,7 +37,11 @@ export default {
     getDisciplines(){
       DisciplineS.get().then((response)=>{
         this.disciplines=response.data;
-      });
+      })
+    },
+    deleteDiscipline(id){
+      DisciplineS.delete(id).then(response=>{console.log('Deleted successfully')})
+      this.$router.go('/disciplines')
     }
   },
   created(){
@@ -50,6 +59,16 @@ header{
 .footer{
   position:relative;
   bottom:0;
+}
+.add{
+  margin-left: 30px;
+  width: 250px;
+  font-family: sans-serif;
+  font-size: 20px;
+}
+.link{
+  text-decoration: none;
+  color: cornflowerblue;
 }
 
 .d_h{
@@ -70,17 +89,10 @@ td{
   font-size: 20px;
   font-weight: bold;
 }
-td a{
-  text-decoration: none;
-  color: #42424b;
-}
-td a:hover{
-  color: cornflowerblue;
-}
+
 tr{
   display: grid;
   grid-template-columns: 400px 50px 50px;
-  /*background-color: rgb(218, 218, 222, 0.2);*/
   background: rgba(126, 192, 227, 0.05);
   border-radius: 5px;
   margin-left: 200px;
@@ -92,7 +104,14 @@ tr{
   color: mediumseagreen;
   text-align: center;
 }
+.edit:hover{
+  color: #1f1e1e;
+}
 .delete{
   color: red;
   text-align: center;
-}</style>
+}
+.delete:hover{
+  color: black;
+}
+</style>

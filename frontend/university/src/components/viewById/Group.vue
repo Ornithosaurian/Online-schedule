@@ -1,11 +1,10 @@
 <template>
   <Header class="header"></Header>
-  <div class="icons">
-    <div class="edit"><font-awesome-icon class="icon" icon="pen-to-square" /></div>
-    <div class="delete" @click="deleteGroup"><font-awesome-icon class="icon" icon="trash-can" /></div>
-  </div>
   <div v-if="group">
+    <div class="add"><router-link class="link" :to="{name:'addStudent'}">
+      <font-awesome-icon class="icon" icon="circle-plus" /> Add new Student</router-link></div>
     <h1 class="f_h">Students of {{group.name}}</h1>
+
     <p>Course: {{group.course}}</p>
     <table>
       <tr v-for="student in group.students" v-bind:key="student.id">
@@ -53,6 +52,17 @@ export default {
 </script>
 
 <style scoped>
+.add{
+  margin-left: 30px;
+  width: 250px;
+  font-family: sans-serif;
+  font-size: 20px;
+}
+.link{
+  text-decoration: none;
+  color: cornflowerblue;
+}
+
 .icons{
   display: grid;
   grid-template-columns: 50px 50px;

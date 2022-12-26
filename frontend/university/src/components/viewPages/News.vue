@@ -1,6 +1,8 @@
 <template>
   <Header class="header"></Header>
   <h1 class="d_h">News</h1>
+  <div class="add"><router-link class="link" :to="{name:'addNew'}">
+    <font-awesome-icon class="icon" icon="circle-plus" /> Add new one</router-link></div>
 
     <div class="new_block" >
 
@@ -48,6 +50,16 @@ export default {
 </script>
 
 <style scoped>
+.add{
+  margin-left: 30px;
+  width: 250px;
+  font-family: sans-serif;
+  font-size: 20px;
+}
+.link{
+  text-decoration: none;
+  color: cornflowerblue;
+}
 .title{
 margin-left: 10px;
   font-size: 20px;

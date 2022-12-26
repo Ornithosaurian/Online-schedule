@@ -1,8 +1,12 @@
 <template>
   <Header class="header"></Header>
   <div class="icons">
-    <div class="edit"><font-awesome-icon class="icon" icon="pen-to-square" /></div>
-    <div class="delete" @click="deleteStudent"><font-awesome-icon class="icon" icon="trash-can" /></div>
+    <div><router-link class="edit" :to="{name:'editStudent', params:{se_id:student.id}}">
+      <font-awesome-icon class="icon" icon="pen-to-square" />
+    </router-link></div>
+    <div class="delete" @click="deleteStudent">
+      <font-awesome-icon class="icon" icon="trash-can"/>
+    </div>
   </div>
   <h1 class="t_h">Student</h1>
   <div v-if="student">
@@ -65,6 +69,7 @@ export default {
 </script>
 
 <style scoped>
+
 .icons{
   display: grid;
   grid-template-columns: 50px 50px;
@@ -117,6 +122,9 @@ tr{
 .edit{
   color: mediumseagreen;
   text-align: center;
+}
+.edit:hover{
+  color: black;
 }
 .delete{
   color: red;

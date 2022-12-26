@@ -11,5 +11,11 @@ class TeacherS{
     delete(id){
         return http.delete(`/teachers/${id}`)
     }
+    update(id,data){
+        return http.put(`/teachers/${id}`,data)
+    }
+    add(data){
+        return http.post('/teachers',data)
+    }
 }
 export default new TeacherS();
