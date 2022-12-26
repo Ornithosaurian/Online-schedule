@@ -38,4 +38,14 @@ public class Department extends Model {
 
     @ManyToOne(targetEntity = Faculty.class, fetch = FetchType.LAZY)
     private Faculty faculty;
+
+    public void addGroup(UnGroup group){
+        groups.add(group);
+        group.setDepartment(this);
+    }
+
+    public void removeGroup(UnGroup group){
+        groups.remove(group);
+        group.setDepartment(this);
+    }
 }

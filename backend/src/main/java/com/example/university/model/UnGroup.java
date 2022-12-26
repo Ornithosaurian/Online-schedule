@@ -34,4 +34,14 @@ public class UnGroup extends Model {
 
     @ManyToOne(targetEntity = Department.class, fetch = FetchType.LAZY)
     private Department department;
+
+    public void addStudent(Student student){
+        students.add(student);
+        student.setUnGroup(this);
+    }
+
+    public void removeStudent(Student student){
+        students.remove(student);
+        student.setUnGroup(this);
+    }
 }

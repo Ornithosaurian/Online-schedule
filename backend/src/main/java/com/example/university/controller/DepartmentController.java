@@ -2,7 +2,9 @@ package com.example.university.controller;
 
 import com.example.university.exception.ResourceNotFoundException;
 import com.example.university.model.Department;
+import com.example.university.model.Faculty;
 import com.example.university.model.Model;
+import com.example.university.model.UnGroup;
 import com.example.university.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,6 +43,14 @@ public class DepartmentController extends BaseController{
         updatedDepartment.setImgSrc(department.getImgSrc());
 
         departmentService.save(updatedDepartment);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PutMapping("/addGroup/{id}")
+    public ResponseEntity<HttpStatus> addDepartment(@PathVariable("id") long id, @RequestBody UnGroup group) {
+        Department department = (Department) departmentService.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Not found " + Department.class + " with id = " + id));
+        department.addGroup(group);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

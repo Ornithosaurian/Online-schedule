@@ -1,6 +1,7 @@
 package com.example.university.controller;
 
 import com.example.university.exception.ResourceNotFoundException;
+import com.example.university.model.Student;
 import com.example.university.model.UnGroup;
 import com.example.university.model.Model;
 import com.example.university.service.GroupService;
@@ -40,6 +41,14 @@ public class GroupController extends BaseController {
         updatedGroup.setCourse(group.getCourse());
 
         groupService.save(updatedGroup);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PutMapping("/addStudent/{id}")
+    public ResponseEntity<HttpStatus> addDepartment(@PathVariable("id") long id, @RequestBody Student student) {
+        UnGroup group = (UnGroup) groupService.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Not found " + UnGroup.class + " with id = " + id));
+        group.addStudent(student);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

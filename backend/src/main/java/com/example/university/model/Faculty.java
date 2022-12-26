@@ -35,4 +35,14 @@ public class Faculty extends Model {
     @OneToMany(targetEntity = Department.class,
             cascade = {CascadeType.REMOVE, CascadeType.REFRESH}, orphanRemoval = true)
     private List<Department> departments = new ArrayList<>();
+
+    public void addDepartment(Department department){
+        departments.add(department);
+        department.setFaculty(this);
+    }
+
+    public void removeDepartment(Department department){
+        departments.remove(department);
+        department.setFaculty(null);
+    }
 }
