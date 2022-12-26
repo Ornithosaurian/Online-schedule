@@ -33,7 +33,7 @@ public class Faculty extends Model {
     private String imgSrc;
 
     @OneToMany(targetEntity = Department.class,
-            cascade = {CascadeType.REMOVE, CascadeType.REFRESH}, orphanRemoval = true)
+            cascade = {CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.MERGE, CascadeType.DETACH}, orphanRemoval = true)
     private List<Department> departments = new ArrayList<>();
 
     public void addDepartment(Department department){

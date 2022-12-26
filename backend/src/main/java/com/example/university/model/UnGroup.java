@@ -29,7 +29,7 @@ public class UnGroup extends Model {
     private String course;
 
     @OneToMany(targetEntity = Student.class,
-            cascade = {CascadeType.REMOVE, CascadeType.REFRESH}, orphanRemoval = true)
+            cascade = {CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.MERGE, CascadeType.DETACH}, orphanRemoval = true)
     private List<Student> students = new ArrayList<>();
 
     @ManyToOne(targetEntity = Department.class, fetch = FetchType.LAZY)

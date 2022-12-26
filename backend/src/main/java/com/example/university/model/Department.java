@@ -33,7 +33,7 @@ public class Department extends Model {
     private String imgSrc;
 
     @OneToMany(targetEntity = UnGroup.class,
-            cascade = {CascadeType.REMOVE, CascadeType.REFRESH}, orphanRemoval = true)
+            cascade = {CascadeType.REMOVE, CascadeType.REFRESH, CascadeType.MERGE, CascadeType.DETACH}, orphanRemoval = true)
     private List<UnGroup> groups = new ArrayList<>();
 
     @ManyToOne(targetEntity = Faculty.class, fetch = FetchType.LAZY)
