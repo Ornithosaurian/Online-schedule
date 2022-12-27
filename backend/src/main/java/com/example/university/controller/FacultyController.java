@@ -1,6 +1,7 @@
 package com.example.university.controller;
 
 import com.example.university.exception.ResourceNotFoundException;
+import com.example.university.model.Department;
 import com.example.university.model.Faculty;
 import com.example.university.model.Model;
 import com.example.university.service.FacultyService;
@@ -44,6 +45,14 @@ public class FacultyController extends BaseController {
         updatedFaculty.setDepartments(faculty.getDepartments());
 
         facultyService.save(updatedFaculty);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PutMapping("/addDepartment/{id}")
+    public ResponseEntity<HttpStatus> addDepartment(@PathVariable("id") long id, @RequestBody Department department) {
+        Faculty faculty = (Faculty) facultyService.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Not found " + Faculty.class + " with id = " + id));
+        faculty.addDepartment(department);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
