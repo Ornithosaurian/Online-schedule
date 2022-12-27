@@ -11,5 +11,11 @@ class DepartmentS{
     delete(id){
         return http.delete(`/departments/${id}`)
     }
+    update(id,data){
+        return http.put(`/departments/${id}`,data)
+    }
+    add(data){
+        return http.post('/departments',data)
+    }
 }
 export default new DepartmentS();

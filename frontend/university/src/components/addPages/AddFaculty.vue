@@ -1,17 +1,17 @@
 <template>
   <Header class="header"></Header>
-  <h1 class="t_h">Edit faculty</h1>
+  <h1 class="t_h">Add faculty</h1>
 
-  <h2 >Edit full name of faculty:</h2>
+  <h2 >Enter full name of faculty:</h2>
   <input type="text" v-model="faculty.name"><br>
-  <h2 >Edit short name:</h2>
+  <h2 >Enter short name:</h2>
   <input type="text" v-model="faculty.shortName"><br>
-  <h2 >Edit description:</h2>
+  <h2 >Enter description:</h2>
   <input type="text" v-model="faculty.description"><br>
-  <h2 >Edit imgSrc:</h2>
+  <h2 >Enter imgSrc:</h2>
   <input type="text" v-model="faculty.imgSrc"><br>
 
-  <button @click="updateFaculty">Save</button>
+  <button @click="addFaculty">Add</button>
 
   <Footer class="footer"></Footer>
 </template>
@@ -29,22 +29,19 @@ export default {
   },
   data(){
     return{
-      faculty:null
+      faculty:{
+        name:'',
+        shortName:'',
+        description:'',
+        imgSrc:''
+      }
     }
   },
   methods: {
-    getFaculty(id){
-      FacultyS.getById(id).then((response)=>{
-        this.faculty=response.data;
-      })
-    },
-    updateFaculty(){
-      FacultyS.update(this.faculty.id, this.faculty).then(response=>{console.log('Updated successfully')})
+    addFaculty(){
+      FacultyS.add(this.faculty).then(response=>{console.log('Added successfully')})
       this.$router.go(-1)
     }
-  },
-  created(){
-    this.getFaculty(this.$route.params.fe_id)
   }
 }
 </script>

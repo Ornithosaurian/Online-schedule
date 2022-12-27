@@ -17,5 +17,11 @@ class NewS{
     add(data){
         return http.post('/news',data)
     }
+    newFirst(){
+        return http.get('/news/sortByNew')
+    }
+    oldFirst(){
+        return http.get('/news/sortByOld')
+    }
 }
 export default new NewS();

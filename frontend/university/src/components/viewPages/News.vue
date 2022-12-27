@@ -1,6 +1,10 @@
 <template>
   <Header class="header"></Header>
   <h1 class="d_h">News</h1>
+  <div class="icons">
+    <button @click="newFirst">New first</button>
+    <button @click="oldFirst">Old first</button>
+  </div>
   <div class="add"><router-link class="link" :to="{name:'addNew'}">
     <font-awesome-icon class="icon" icon="circle-plus" /> Add new one</router-link></div>
 
@@ -41,6 +45,16 @@ export default {
       NewS.get().then((response)=>{
         this.news=response.data;
       });
+    },
+    oldFirst(){
+      NewS.oldFirst().then((response)=>{
+        this.news=response.data;
+      });
+    },
+    newFirst(){
+      NewS.newFirst().then((response)=>{
+        this.news=response.data;
+      });
     }
   },
   created(){
@@ -50,6 +64,24 @@ export default {
 </script>
 
 <style scoped>
+.icons{
+  display: grid;
+  grid-template-columns: 80px 80px;
+  grid-column-gap: 20px;
+  float: right;
+}
+button{
+  background-color: rgba(115, 196, 239, 0.8);
+  font-size: 15px;
+  border: none;
+  font-family: sans-serif;
+  height: 25px;
+  color: #42424b;
+}
+button:hover{
+  color: rgba(115, 196, 239, 0.8);
+  background-color:#42424b;
+}
 .add{
   margin-left: 30px;
   width: 250px;

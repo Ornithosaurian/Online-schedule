@@ -1,8 +1,12 @@
 <template>
   <Header class="header"></Header>
   <div class="icons">
-    <div class="edit"><font-awesome-icon class="icon" icon="pen-to-square" /></div>
-    <div class="delete" @click="deleteDepartment"><font-awesome-icon class="icon" icon="trash-can" /></div>
+    <div><router-link class="edit" :to="{name:'editDepartment', params:{de_id:department.id}}">
+      <font-awesome-icon class="icon" icon="pen-to-square" />
+    </router-link></div>
+    <div class="delete" @click="deleteDepartment">
+      <font-awesome-icon class="icon" icon="trash-can"/>
+    </div>
   </div>
   <div v-if="department">
     <h1 class="t_h">{{department.shortName}}</h1>
@@ -123,6 +127,9 @@ tr{
 .edit{
   color: mediumseagreen;
   text-align: center;
+}
+.edit:hover{
+  color: black;
 }
 .delete{
   color: red;

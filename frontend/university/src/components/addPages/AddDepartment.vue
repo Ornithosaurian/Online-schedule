@@ -1,17 +1,17 @@
 <template>
   <Header class="header"></Header>
-  <h1 class="t_h">Edit faculty</h1>
+  <h1 class="t_h">Add department</h1>
 
-  <h2 >Edit full name of faculty:</h2>
-  <input type="text" v-model="faculty.name"><br>
-  <h2 >Edit short name:</h2>
-  <input type="text" v-model="faculty.shortName"><br>
-  <h2 >Edit description:</h2>
-  <input type="text" v-model="faculty.description"><br>
-  <h2 >Edit imgSrc:</h2>
-  <input type="text" v-model="faculty.imgSrc"><br>
+  <h2 >Enter full name of department:</h2>
+  <input type="text" v-model="department.name"><br>
+  <h2 >Enter short name:</h2>
+  <input type="text" v-model="department.shortName"><br>
+  <h2 >Enter description:</h2>
+  <input type="text" v-model="department.description"><br>
+  <h2 >Enter imgSrc:</h2>
+  <input type="text" v-model="department.imgSrc"><br>
 
-  <button @click="updateFaculty">Save</button>
+  <button @click="addDepartment">Add</button>
 
   <Footer class="footer"></Footer>
 </template>
@@ -19,32 +19,29 @@
 <script>
 import Header from "../Header.vue";
 import Footer from "../Footer.vue";
-import FacultyS from "../../services/FacultyS.js"
+import DepartmentS from "../../services/DepartmentS.js"
 
 export default {
-  name: "AddFaculty",
+  name: "AddDepartment",
   components: {
     Header,
     Footer
   },
   data(){
     return{
-      faculty:null
+      department:{
+        name:'',
+        shortName:'',
+        description:'',
+        imgSrc:''
+      }
     }
   },
   methods: {
-    getFaculty(id){
-      FacultyS.getById(id).then((response)=>{
-        this.faculty=response.data;
-      })
-    },
-    updateFaculty(){
-      FacultyS.update(this.faculty.id, this.faculty).then(response=>{console.log('Updated successfully')})
+    addDepartment(){
+      DepartmentS.add(this.department).then(response=>{console.log('Added successfully')})
       this.$router.go(-1)
     }
-  },
-  created(){
-    this.getFaculty(this.$route.params.fe_id)
   }
 }
 </script>

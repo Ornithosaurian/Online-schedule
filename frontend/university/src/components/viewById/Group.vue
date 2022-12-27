@@ -9,8 +9,6 @@
     <table>
       <tr v-for="student in group.students" v-bind:key="student.id">
         <td><router-link :to="{name:'student', params:{s_id:student.id}}">{{student.name}} {{student.surname}}</router-link></td>
-        <td class="edit"><font-awesome-icon class="icon" icon="pen-to-square" /></td>
-        <td class="delete"><font-awesome-icon class="icon" icon="trash-can" /></td>
       </tr>
     </table>
   </div>
@@ -62,12 +60,6 @@ export default {
   text-decoration: none;
   color: cornflowerblue;
 }
-
-.icons{
-  display: grid;
-  grid-template-columns: 50px 50px;
-  grid-column-gap: 10px;
-}
 p{
   margin-left: 650px;
   font-family: sans-serif;
@@ -93,8 +85,8 @@ p{
 table{
   display: grid;
   grid-row-gap: 5px;
-  width:500px ;
-  margin-left: 300px;
+  width:300px ;
+  margin-left: 450px;
 }
 td{
   font-family: sans-serif;
@@ -110,8 +102,7 @@ td a:hover{
 }
 tr{
   display: grid;
-  grid-template-columns: 400px 50px 50px;
-  /*background-color: rgb(218, 218, 222, 0.2);*/
+  grid-template-columns: 210px;
   background: rgba(126, 192, 227, 0.05);
   border-radius: 5px;
   margin-left: 200px;

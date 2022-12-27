@@ -1,12 +1,12 @@
 <template>
   <Header class="header"></Header>
+  <div class="add"><router-link class="link" :to="{name:'addDepartment'}">
+    <font-awesome-icon class="icon" icon="circle-plus" /> Add new Department</router-link></div>
   <div v-if="faculty">
   <h1 class="f_h">Departments of {{faculty.shortName}}</h1>
   <table>
     <tr v-for="department in faculty.departments" v-bind:key="department.id">
       <td><router-link :to="{name:'department', params:{d_id:department.id}}">{{department.shortName}}</router-link></td>
-      <td class="edit"><font-awesome-icon class="icon" icon="pen-to-square" /></td>
-      <td class="delete"><font-awesome-icon class="icon" icon="trash-can" /></td>
     </tr>
   </table>
   </div>
@@ -44,6 +44,16 @@ export default {
 </script>
 
 <style scoped>
+.add{
+  margin-left: 30px;
+  width: 250px;
+  font-family: sans-serif;
+  font-size: 20px;
+}
+.link{
+  text-decoration: none;
+  color: cornflowerblue;
+}
 .header{
   margin-bottom: 60px;
 }
@@ -63,8 +73,8 @@ export default {
 table{
   display: grid;
   grid-row-gap: 5px;
-  width:500px ;
-  margin-left: 300px;
+  width:200px ;
+  margin-left: 500px;
 }
 td{
   font-family: sans-serif;
@@ -80,8 +90,7 @@ td a:hover{
 }
 tr{
   display: grid;
-  grid-template-columns: 400px 50px 50px;
-  /*background-color: rgb(218, 218, 222, 0.2);*/
+  grid-template-columns: 70px;
   background: rgba(126, 192, 227, 0.05);
   border-radius: 5px;
   margin-left: 200px;

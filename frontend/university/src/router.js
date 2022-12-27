@@ -23,6 +23,8 @@ import AddTeacher from "@/components/addPages/AddTeacher.vue"
 import AddNew from "@/components/addPages/AddNew.vue"
 import AddStudent from "@/components/addPages/AddStudent.vue"
 import AddGroup from "@/components/addPages/AddGroup.vue"
+import AddFaculty from "@/components/addPages/AddFaculty.vue"
+import AddDepartment from "@/components/addPages/AddDepartment.vue"
 
 export default createRouter({
         history: createWebHashHistory(),
@@ -51,7 +53,11 @@ export default createRouter({
             {path: '/faculties/:f_id/departments/:d_id/groups/:g_id/student/editStudent/:se_id', name:'editStudent', component: EditStudent},
             {path: '/faculties/:f_id/departments/:d_id/groups/:g_id/students/addStudent', name: 'addStudent', component: AddStudent},
             {path: '/faculties/:f_id/departments/:d_id/groups/addGroup', name: 'addGroup', component: AddGroup},
-            {path: '/faculties/:f_id/departments/:d_id/groups/editGroup/:ge_id', name: 'editGroup', component: EditGroup}
+            {path: '/faculties/:f_id/departments/:d_id/groups/editGroup/:ge_id', name: 'editGroup', component: EditGroup},
+            {path: '/faculties/addFaculty', name:'addFaculty', component: AddFaculty},
+            {path: '/faculties/editFaculty/:fe_id', name: 'editFaculty', component: EditFaculty},
+            {path: '/faculties/:f_id/departments/addDepartment', name: 'addDepartment', component: AddDepartment},
+            {path: '/faculties/:f_id/departments/editDepartment/:de_id', name: 'editDepartment', component: EditDepartment}
         ]
     }
 )
