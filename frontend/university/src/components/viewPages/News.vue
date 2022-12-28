@@ -2,8 +2,8 @@
   <Header class="header"></Header>
   <h1 class="d_h">News</h1>
   <div class="icons">
-    <button @click="newFirst">New first</button>
-    <button @click="oldFirst">Old first</button>
+    <button @click="newFirst">Old first</button>
+    <button @click="oldFirst">New first</button>
   </div>
   <div class="add"><router-link class="link" :to="{name:'addNew'}">
     <font-awesome-icon class="icon" icon="circle-plus" /> Add new one</router-link></div>

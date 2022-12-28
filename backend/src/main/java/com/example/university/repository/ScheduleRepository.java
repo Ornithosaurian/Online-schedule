@@ -10,7 +10,13 @@ public interface ScheduleRepository extends BaseRepository<Schedule> {
 
     @Query(value = "select s from Schedule s " +
             "join s.group ug " +
-            "where ug.name = :group and s.day=:day")
-    List<Schedule> selectByGroupAndDay(@Param("group") String groupName,
-                                        @Param("day") String day);
+            "where ug.name = :group")
+    List<Schedule> selectByGroupAndDay(@Param("group") String groupName);
+
+
+    @Query(value = "select s from Schedule s " +
+            "join s.group ug " +
+            "where ug.id = :group")
+    List<Schedule> selectByGroupId(@Param("group") String groupName);
+
 }

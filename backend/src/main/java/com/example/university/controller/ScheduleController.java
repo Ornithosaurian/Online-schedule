@@ -52,9 +52,17 @@ public class ScheduleController extends BaseController{
     }
 
     @GetMapping("/sort")
-    public ResponseEntity<List<Schedule>> sortByGroupAndDay(@Param("group") String group,
-                                                        @Param("day") String day){
-        List<Schedule> schedulesList = scheduleService.sortByGroupAndDay(group,day);
+    public ResponseEntity<List<Schedule>> sortByGroupAndDay(@Param("group") String group){
+        List<Schedule> schedulesList = scheduleService.sortByGroupAndDay(group);
+        if (schedulesList.isEmpty()) {
+            return new ResponseEntity<>(schedulesList, HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(schedulesList, HttpStatus.OK);
+    }
+
+    @GetMapping("/sortByGroupName")
+    public ResponseEntity<List<Schedule>> sortByGroupName(@Param("group") String group){
+        List<Schedule> schedulesList = scheduleService.sortByGroupId(group);
         if (schedulesList.isEmpty()) {
             return new ResponseEntity<>(schedulesList, HttpStatus.NO_CONTENT);
         }

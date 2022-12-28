@@ -25,6 +25,10 @@ import AddStudent from "@/components/addPages/AddStudent.vue"
 import AddGroup from "@/components/addPages/AddGroup.vue"
 import AddFaculty from "@/components/addPages/AddFaculty.vue"
 import AddDepartment from "@/components/addPages/AddDepartment.vue"
+import Schedule from "@/components/schedule/Schedule.vue"
+import EditGroupSchedule from "@/components/schedule/EditGroupSchedule.vue"
+import EditSchedule from "@/components/schedule/EditSchedule.vue"
+import AddSchedule from "@/components/schedule/AddSchedule.vue"
 
 export default createRouter({
         history: createWebHashHistory(),
@@ -57,7 +61,11 @@ export default createRouter({
             {path: '/faculties/addFaculty', name:'addFaculty', component: AddFaculty},
             {path: '/faculties/editFaculty/:fe_id', name: 'editFaculty', component: EditFaculty},
             {path: '/faculties/:f_id/departments/addDepartment', name: 'addDepartment', component: AddDepartment},
-            {path: '/faculties/:f_id/departments/editDepartment/:de_id', name: 'editDepartment', component: EditDepartment}
+            {path: '/faculties/:f_id/departments/editDepartment/:de_id', name: 'editDepartment', component: EditDepartment},
+            {path: '/schedule', component: Schedule},
+            {path:'/editSchedule/:sg_id', name:'editSchedule', component: EditGroupSchedule},
+            {path: '/editSchedule/:sg_id/edit/:sche_id', name:'editOneSchedule',component:EditSchedule },
+            {path: '/editSchedule/:sg_id/addSchedule/:sg_id', name: 'addSchedule', component: AddSchedule}
         ]
     }
 )

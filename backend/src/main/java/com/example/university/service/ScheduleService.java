@@ -19,8 +19,11 @@ public class ScheduleService extends BaseService<Schedule, ScheduleRepository> {
         this.scheduleRepository = scheduleRepository;
     }
 
-    public List<Schedule> sortByGroupAndDay(@Param("group") String groupName,
-                                            @Param("day") String day) {
-        return scheduleRepository.selectByGroupAndDay(groupName, day);
+    public List<Schedule> sortByGroupAndDay(@Param("group") String groupName) {
+        return scheduleRepository.selectByGroupAndDay(groupName);
+    }
+
+    public List<Schedule> sortByGroupId(@Param("group") String groupName) {
+        return scheduleRepository.selectByGroupId(groupName);
     }
 }
