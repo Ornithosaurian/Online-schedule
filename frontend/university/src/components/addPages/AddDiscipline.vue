@@ -42,8 +42,9 @@ export default {
 }
 
 .footer{
-  position:relative;
+  position:static;
   bottom:0;
+  margin-top:180px;
 }
 button{
   margin-left: 720px;

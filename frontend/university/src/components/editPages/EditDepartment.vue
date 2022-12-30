@@ -6,7 +6,7 @@
   <input type="text" v-model="department.name"><br>
   <h2 >Edit short name:</h2>
   <input type="text" v-model="department.shortName"><br>
-  <h2 >Esit description:</h2>
+  <h2 >Edit description:</h2>
   <input type="text" v-model="department.description"><br>
   <h2 >Edit imgSrc:</h2>
   <input type="text" v-model="department.imgSrc"><br>

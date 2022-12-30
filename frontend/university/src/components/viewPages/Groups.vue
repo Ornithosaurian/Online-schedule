@@ -65,8 +65,9 @@ export default {
 }
 
 .footer{
-  position:relative;
+  position:static;
   bottom:0;
+  margin-top: 115px;
 }
 
 .f_h{
